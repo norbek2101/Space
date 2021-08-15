@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="page">
+        <div id="body">
+            <div class="header">
+                <div>
+                    <h1>Blog</h1>
+                    <div class="article">
+                        <ul>
+                            {% for blog in blogs %}
+                                <li>
+                                    <a href="{% url 'blog_detail' blog.id %}"><img src="{{ blog.image.url }}" alt=""></a>
+                                    <h1>{{ blog.title }}</h1>
+                                    <span>{{ blog.created }}</span>
+                                    <p>{{ blog.content | truncatewords:20 }}</p>
+                                    <a href="{% url 'blog_detail' blog.id %}" class="more">Read More</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="sidebar">
+                        <ul>
+                            <li>
+                                <h1>FEATURED POSTS</h1>
+                                <a href="singlepost.html"><img src="{% static 'images/moon-satellite.jpg' %}" alt=""></a>
+                                <h2>SOYUZ TMA-M</h2>
+                                <span>FEBRUARY 6, 2023</span>
+                            </li>
+                            <li>
+                                <h1>RECENT POSTS</h1>
+                                <ul>
+                                    <li>
+                                        <a href="singlepost.html"><img src="{% static 'images/alien-life.jpg' %}" alt=""></a>
+                                        <h2>ALIEN LIFE</h2>
+                                        <span>FEBRUARY 3, 2023</span>
+                                    </li>
+                                    <li>
+                                        <a href="singlepost.html"><img src="{% static 'images/galaxy.jpg' %}" alt=""></a>
+                                        <h2>THE GALAXY</h2>
+                                        <span>FEBRUARY 1, 2023</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

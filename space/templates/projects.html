@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="page">
+        <div id="body">
+            <div class="header">
+                <div>
+                    <h1>Projects</h1>
+                    <ul>
+                        {% for project in projects %}
+                            <li>
+                            <a href="{% url 'project_detail' project.id %}"><img src="{{ project.image.url }}" alt=""></a>
+                            <div>
+                                <h1>{{ project.title }}</h1>
+                                <p>{{ project.content | truncatewords:20 }}</p>
+                                <p>{{ project.created }}</p>
+                                <a href="{% url 'project_detail' project.id %}" class="more">Read More</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
